@@ -78,7 +78,7 @@ public class Main {
 		
 		Random rand = new Random();
 		String palavraDoJogo = palavras.get(rand.nextInt(palavras.size()));
-		int espaco = 129;
+		int espaco = 129; // Meu espaco inicial
 		
 		List<JLabel> campos = new ArrayList<>();
 		
@@ -87,7 +87,7 @@ public class Main {
 			label.setBounds(espaco, 128, 53, 19);
 			frame.getContentPane().add(label);
 			campos.add(label);
-			espaco += 50;
+			espaco += 50; // Espaco entre os campos aumenta de 50 em 50
 		}
 		
 		JButton letraA = new JButton("A");
@@ -355,9 +355,9 @@ public class Main {
 	public void verificar(int encontrou, int[] chances, JLabel labelChances) {
 		if(encontrou == 0) {
 			if(chances[0] != 0) {
-				chances[0] = chances[0] - 1; 
-				labelChances.setText(String.valueOf(chances[0]));
-			} else {
+				chances[0] = chances[0] - 1; // Chance diminui conforme ele erra
+				labelChances.setText(String.valueOf(chances[0])); // Atualiza na tela a quantidade de chances
+			} else { // Se acabou as chances
 				JOptionPane.showMessageDialog(null, 
                           "Você Perdeu!", 
                           "Mensagem", 
@@ -376,12 +376,12 @@ public class Main {
 		for(int i = 0; i < palavraDoJogo.length(); i++) {				
 			if(Character.toLowerCase(letra) == palavraDoJogo.charAt(i) || 
 					Character.toUpperCase(letra) == palavraDoJogo.charAt(i)) {
-				campos.get(i).setText(l.getText());
+				campos.get(i).setText(l.getText()); // Caso a palavra tenha a letra informada ele insere na posi
 				encontrou++;
 			} 
-			if(encontrou >= 0 && campos.get(i).getText() != s) {
+			if(encontrou >= 0 && campos.get(i).getText() != s) { 
 				cont++;
-			}
+			} // Verifica se todos os campos tem caracteres para dizer se ganhou ou nao
 		}
 		
 		if(cont == palavraDoJogo.length()) {
@@ -391,10 +391,10 @@ public class Main {
                     JOptionPane.WARNING_MESSAGE);
 			
 			
-			mensagem();
+			mensagem(); // Mostra a mensagem se o usuario deseja continuar
 		}
 		
-		l.setVisible(false);
+		l.setVisible(false); // Esconde a letra do teclado
 		return encontrou;
 	}
 	public void mensagem() {
@@ -402,11 +402,11 @@ public class Main {
 		int dialogResult = JOptionPane.showConfirmDialog(null, "Deseja Continuar?", "Mensagem", dialogButton);
 		
 		if(dialogResult == 0) {
-			//todo
-		}else {
+			//Todo
+		}else { 
 			System.exit(0);
 			frame.dispose();
 			frame.setVisible(false);
-		}
+		} // Usuario saiu do programa
 	}
 }
