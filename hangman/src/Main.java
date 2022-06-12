@@ -1,8 +1,10 @@
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -16,15 +18,13 @@ import javax.swing.JOptionPane;
 public class Main {
 
 	private JFrame frame;
+	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
+	public static void newScreen(int op) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main window = new Main();
+					Main window = new Main(op);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,17 +33,25 @@ public class Main {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
-	public Main() {
-		initialize();
+	public Main(int op) {
+		initialize(op);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+	public void mensagem() {
+		int dialogButton = JOptionPane.YES_NO_OPTION;
+		int dialogResult = JOptionPane.showConfirmDialog(null, "Deseja Continuar?", "Mensagem", dialogButton);
+		
+		if(dialogResult == 0) {
+			frame.dispose();
+			Option.main(null);
+		}else { 
+			System.exit(0);
+			frame.dispose();
+			frame.setVisible(false);
+		} // Usuario saiu do programa
+	}
+	
+	private void initialize(int op) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setSize(800, 600);
@@ -51,26 +59,51 @@ public class Main {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		
 		int[] chances = {4};
 		JLabel lblNewLabel = new JLabel("Chances Restantes: ");
-		lblNewLabel.setBounds(22, 27, 146, 19);
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblNewLabel.setBounds(22, 24, 246, 16);
 		frame.getContentPane().add(lblNewLabel);
 		
 		String s = String.valueOf(chances[0]);
 		JLabel labelChances = new JLabel(s);
-		 labelChances.setBounds(180, 29, 70, 15);
+		labelChances.setFont(new Font("Dialog", Font.BOLD, 18));
+		 labelChances.setBounds(252, 25, 70, 15);
 		frame.getContentPane().add(labelChances);
 		
-		File file = new File("src/words");
 		List<String> palavras = new ArrayList<>();
 
 		try {
-			Scanner sc = new Scanner(file);
-			
-			while(sc.hasNextLine()) {
-				String p = sc.nextLine();
-				palavras.add(p);
+			if(op == 1) {
+				File file = new File("src/animais");
+				Scanner sc = new Scanner(file);
+				while(sc.hasNextLine()) {
+					String p = sc.nextLine();
+					palavras.add(p);
+				}
+				
+				sc.close();
+				
+			} else if(op == 2) {
+				File file = new File("src/comidas");
+				Scanner sc = new Scanner(file);
+				while(sc.hasNextLine()) {
+					String p = sc.nextLine();
+					palavras.add(p);
+				}
+				
+				sc.close();
+			} else if (op == 3) {
+				File file = new File("src/profissoes");
+				Scanner sc = new Scanner(file);
+				while(sc.hasNextLine()) {
+					String p = sc.nextLine();
+					palavras.add(p);
+				}
+				
 			}
+			
 		
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -78,19 +111,31 @@ public class Main {
 		
 		Random rand = new Random();
 		String palavraDoJogo = palavras.get(rand.nextInt(palavras.size()));
+
 		int espaco = 129; // Meu espaco inicial
 		
 		List<JLabel> campos = new ArrayList<>();
 		
 		for(int i = 0; i < palavraDoJogo.length(); i++) {
-			JLabel label = new JLabel("_____");
-			label.setBounds(espaco, 128, 53, 19);
-			frame.getContentPane().add(label);
-			campos.add(label);
-			espaco += 50; // Espaco entre os campos aumenta de 50 em 50
+			char aux = ' ';
+			if(palavraDoJogo.charAt(i) != aux) {				
+				JLabel label = new JLabel("__");
+				label.setBounds(espaco, 128, 53, 19);
+				frame.getContentPane().add(label);
+				campos.add(label);
+				espaco += 20; // Espaco entre os campos aumenta de 50 em 50
+			} else {
+				JLabel label = new JLabel(" ");
+				label.setBounds(espaco, 128, 53, 19);
+				frame.getContentPane().add(label);
+				campos.add(label);
+				espaco += 50; // Espaco entre os campos aumenta de 50 em 50
+			}
 		}
 		
 		JButton letraA = new JButton("A");
+		letraA.setFont(new Font("Dialog", Font.BOLD, 12));
+		letraA.setToolTipText("");
 		letraA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'A', campos, letraA);
@@ -124,7 +169,7 @@ public class Main {
 		letraD.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'D', campos, letraD);
-				verificar(0, chances, labelChances);
+				verificar(encontrou, chances, labelChances);
 			}
 		});
 		letraD.setBounds(306, 373, 71, 19);
@@ -366,16 +411,20 @@ public class Main {
 				mensagem();
 			}
 		}
-		
 	}
 	
 	public int teste(String palavraDoJogo, char letra, List<JLabel> campos, JButton l) {
 		int encontrou = 0;
 		int cont = 0;
-		String s = "_____";
-		for(int i = 0; i < palavraDoJogo.length(); i++) {				
+		String s = "__";
+		for(int i = 0; i < palavraDoJogo.length(); i++) {
+			//Remove todos os acentos para depois verificar letra por letra
+			palavraDoJogo = Normalizer.normalize(palavraDoJogo, Normalizer.Form.NFD);
+			palavraDoJogo = palavraDoJogo.replaceAll("[^\\p{ASCII}]", ""); 
+			
 			if(Character.toLowerCase(letra) == palavraDoJogo.charAt(i) || 
-					Character.toUpperCase(letra) == palavraDoJogo.charAt(i)) {
+				Character.toUpperCase(letra) == palavraDoJogo.charAt(i)) {
+				
 				campos.get(i).setText(l.getText()); // Caso a palavra tenha a letra informada ele insere na posi
 				encontrou++;
 			} 
@@ -397,16 +446,6 @@ public class Main {
 		l.setVisible(false); // Esconde a letra do teclado
 		return encontrou;
 	}
-	public void mensagem() {
-		int dialogButton = JOptionPane.YES_NO_OPTION;
-		int dialogResult = JOptionPane.showConfirmDialog(null, "Deseja Continuar?", "Mensagem", dialogButton);
-		
-		if(dialogResult == 0) {
-			//Todo
-		}else { 
-			System.exit(0);
-			frame.dispose();
-			frame.setVisible(false);
-		} // Usuario saiu do programa
-	}
+	
+	
 }
