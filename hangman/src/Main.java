@@ -139,7 +139,7 @@ public class Main {
 		letraA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'A', campos, letraA);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraA.setBounds(22, 373, 71, 19);
@@ -149,7 +149,7 @@ public class Main {
 		letraB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'B', campos, letraB);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraB.setBounds(116, 373, 71, 19);
@@ -159,7 +159,7 @@ public class Main {
 		letraC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'C', campos, letraC);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraC.setBounds(209, 373, 71, 19);
@@ -169,7 +169,7 @@ public class Main {
 		letraD.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'D', campos, letraD);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraD.setBounds(306, 373, 71, 19);
@@ -179,7 +179,7 @@ public class Main {
 		letraE.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'E', campos, letraE);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraE.setBounds(405, 373, 71, 19);
@@ -189,7 +189,7 @@ public class Main {
 		letraF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'F', campos, letraF);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraF.setBounds(508, 373, 71, 19);
@@ -199,7 +199,7 @@ public class Main {
 		letraG.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'G', campos, letraG);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraG.setBounds(610, 373, 71, 19);
@@ -209,7 +209,7 @@ public class Main {
 		letraH.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				teste(palavraDoJogo, 'H', campos, letraH);
-				verificar(0, chances, labelChances);
+				verificar(0, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraH.setBounds(706, 373, 71, 19);
@@ -219,7 +219,7 @@ public class Main {
 		letraI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'I', campos, letraI);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraI.setBounds(22, 411, 71, 19);
@@ -229,7 +229,7 @@ public class Main {
 		letraJ.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'J', campos, letraJ);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraJ.setBounds(116, 411, 71, 19);
@@ -239,7 +239,7 @@ public class Main {
 		letraK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				teste(palavraDoJogo, 'K', campos, letraK);
-				verificar(0, chances, labelChances);
+				verificar(0, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraK.setBounds(209, 411, 71, 19);
@@ -249,7 +249,7 @@ public class Main {
 		letraL.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'L', campos, letraL);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraL.setBounds(306, 411, 71, 19);
@@ -259,7 +259,7 @@ public class Main {
 		letraM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'M', campos, letraM);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraM.setBounds(405, 411, 71, 19);
@@ -269,7 +269,7 @@ public class Main {
 		letraN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'N', campos, letraN);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraN.setBounds(508, 411, 71, 19);
@@ -279,7 +279,7 @@ public class Main {
 		letraO.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'O', campos, letraO);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraO.setBounds(610, 411, 71, 19);
@@ -289,7 +289,7 @@ public class Main {
 		letraP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'P', campos, letraP);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraP.setBounds(706, 411, 71, 19);
@@ -299,7 +299,7 @@ public class Main {
 		letraQ.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'Q', campos, letraQ);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraQ.setBounds(22, 452, 71, 19);
@@ -309,7 +309,7 @@ public class Main {
 		letraR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'R', campos, letraR);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraR.setBounds(116, 452, 71, 19);
@@ -319,7 +319,7 @@ public class Main {
 		letraS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'S', campos, letraS);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraS.setBounds(209, 452, 71, 19);
@@ -329,7 +329,7 @@ public class Main {
 		letraT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'T', campos, letraT);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraT.setBounds(306, 452, 71, 19);
@@ -339,7 +339,7 @@ public class Main {
 		letraU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'U', campos, letraU);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraU.setBounds(405, 452, 71, 19);
@@ -349,7 +349,7 @@ public class Main {
 		letraV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'V', campos, letraV);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraV.setBounds(508, 452, 71, 19);
@@ -359,7 +359,7 @@ public class Main {
 		letraW.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'W', campos, letraW);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraW.setBounds(610, 452, 71, 19);
@@ -369,7 +369,7 @@ public class Main {
 		letraX.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'X', campos, letraX);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraX.setBounds(706, 452, 71, 19);
@@ -379,7 +379,7 @@ public class Main {
 		letraY.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'Y', campos, letraY);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraY.setBounds(22, 493, 71, 19);
@@ -389,7 +389,7 @@ public class Main {
 		letraZ.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int encontrou = teste(palavraDoJogo, 'Z', campos, letraZ);
-				verificar(encontrou, chances, labelChances);
+				verificar(encontrou, chances, labelChances, palavraDoJogo);
 			}
 		});
 		letraZ.setBounds(116, 493, 71, 19);
@@ -397,14 +397,14 @@ public class Main {
 		
 	}
 	
-	public void verificar(int encontrou, int[] chances, JLabel labelChances) {
+	public void verificar(int encontrou, int[] chances, JLabel labelChances, String palavraDoJogo) {
 		if(encontrou == 0) {
 			if(chances[0] != 0) {
 				chances[0] = chances[0] - 1; // Chance diminui conforme ele erra
 				labelChances.setText(String.valueOf(chances[0])); // Atualiza na tela a quantidade de chances
 			} else { // Se acabou as chances
 				JOptionPane.showMessageDialog(null, 
-                          "Você Perdeu!", 
+                          "Você Perdeu! A palavra é: " + palavraDoJogo, 
                           "Mensagem", 
                           JOptionPane.WARNING_MESSAGE);
 				
