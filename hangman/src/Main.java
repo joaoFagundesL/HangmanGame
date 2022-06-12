@@ -16,10 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class Main {
-
 	private JFrame frame;
 	
-
 	public static void newScreen(int op) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -58,7 +56,6 @@ public class Main {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
 		
 		int[] chances = {4};
 		JLabel lblNewLabel = new JLabel("Chances Restantes: ");
@@ -102,6 +99,8 @@ public class Main {
 					String p = sc.nextLine();
 					palavras.add(p);
 				}
+				
+				sc.close();
 			}
 			
 		
@@ -116,9 +115,10 @@ public class Main {
 		
 		List<JLabel> campos = new ArrayList<>();
 		
-		for(int i = 0; i < palavraDoJogo.length(); i++) {
+		for (int i = 0; i < palavraDoJogo.length(); i++) {
 			char aux = ' ';
-			if(palavraDoJogo.charAt(i) != aux) {				
+			
+			if (palavraDoJogo.charAt(i) != aux) {				
 				JLabel label = new JLabel("__");
 				label.setBounds(espaco, 128, 53, 19);
 				frame.getContentPane().add(label);
@@ -398,8 +398,8 @@ public class Main {
 	}
 	
 	public void verificar(int encontrou, int[] chances, JLabel labelChances, String palavraDoJogo) {
-		if(encontrou == 0) {
-			if(chances[0] != 0) {
+		if (encontrou == 0) {
+			if (chances[0] != 0) {
 				chances[0] = chances[0] - 1; // Chance diminui conforme ele erra
 				labelChances.setText(String.valueOf(chances[0])); // Atualiza na tela a quantidade de chances
 			} else { // Se acabou as chances
@@ -413,27 +413,29 @@ public class Main {
 		}
 	}
 	
-	public int teste(String palavraDoJogo, char letra, List<JLabel> campos, JButton l) {
+	public int teste (String palavraDoJogo, char letra, List<JLabel> campos, JButton l) {
 		int encontrou = 0;
 		int cont = 0;
 		String s = "__";
-		for(int i = 0; i < palavraDoJogo.length(); i++) {
+		
+		for (int i = 0; i < palavraDoJogo.length(); i++) {
 			//Remove todos os acentos para depois verificar letra por letra
 			palavraDoJogo = Normalizer.normalize(palavraDoJogo, Normalizer.Form.NFD);
 			palavraDoJogo = palavraDoJogo.replaceAll("[^\\p{ASCII}]", ""); 
 			
-			if(Character.toLowerCase(letra) == palavraDoJogo.charAt(i) || 
+			if (Character.toLowerCase(letra) == palavraDoJogo.charAt(i) || 
 				Character.toUpperCase(letra) == palavraDoJogo.charAt(i)) {
 				
 				campos.get(i).setText(l.getText()); // Caso a palavra tenha a letra informada ele insere na posi
 				encontrou++;
 			} 
-			if(encontrou >= 0 && campos.get(i).getText() != s) { 
+			
+			if (encontrou >= 0 && campos.get(i).getText() != s) { 
 				cont++;
 			} // Verifica se todos os campos tem caracteres para dizer se ganhou ou nao
 		}
 		
-		if(cont == palavraDoJogo.length()) {
+		if (cont == palavraDoJogo.length()) {
 			JOptionPane.showMessageDialog(null, 
                     "Você Ganhou!", 
                     "Mensagem", 
@@ -446,6 +448,4 @@ public class Main {
 		l.setVisible(false); // Esconde a letra do teclado
 		return encontrou;
 	}
-	
-	
 }
