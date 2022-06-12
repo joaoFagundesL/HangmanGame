@@ -75,7 +75,7 @@ public class Main {
 		List<String> palavras = new ArrayList<>();
 
 		try {
-			if(op == 1) {
+			if (op == 1) {
 				File file = new File("src/animais");
 				Scanner sc = new Scanner(file);
 				while(sc.hasNextLine()) {
@@ -85,7 +85,7 @@ public class Main {
 				
 				sc.close();
 				
-			} else if(op == 2) {
+			} else if (op == 2) {
 				File file = new File("src/comidas");
 				Scanner sc = new Scanner(file);
 				while(sc.hasNextLine()) {
@@ -94,6 +94,7 @@ public class Main {
 				}
 				
 				sc.close();
+				
 			} else if (op == 3) {
 				File file = new File("src/profissoes");
 				Scanner sc = new Scanner(file);
@@ -101,7 +102,6 @@ public class Main {
 					String p = sc.nextLine();
 					palavras.add(p);
 				}
-				
 			}
 			
 		
